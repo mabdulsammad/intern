@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+   <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Unit Converter</h1>
+    <div class="converter">
+        <label for="input">Input:</label>
+        <input type="number" id="input" placeholder="Enter value">
+
+        <label for="from">From:</label>
+        <select id="from">
+            <option value="cm">Centimeter (cm)</option>
+            <option value="inch">Inch (in)</option>
+            <option value="feet">Feet (ft)</option>
+        </select>
+
+        <label for="to">To:</label>
+        <select id="to">
+            <option value="cm">Centimeter (cm)</option>
+            <option value="inch">Inch (in)</option>
+            <option value="feet">Feet (ft)</option>
+        </select>
+<br>
+        <button onclick="convert()">Convert</button>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+    <script>
+        function convert() {
+    var input = document.getElementById("input").value;
+    var fromUnit = document.getElementById("from").value;
+    var toUnit = document.getElementById("to").value;
+    var result = 0;
+
+    if (fromUnit === toUnit) {
+        result = input;
+    } else if (fromUnit === "cm" && toUnit === "inch") {
+        result = input * 0.393701;
+    } else if (fromUnit === "cm" && toUnit === "feet") {
+        result = input * 0.0328084;
+    } else if (fromUnit === "inch" && toUnit === "cm") {
+        result = input * 2.54;
+    } else if (fromUnit === "inch" && toUnit === "feet") {
+        result = input * 0.0833333;
+    } else if (fromUnit === "feet" && toUnit === "cm") {
+        result = input * 30.48;
+    } else if (fromUnit === "feet" && toUnit === "inch") {
+        result = input * 12;
+    }
+
+    document.getElementById("result").innerHTML = input + " " + fromUnit + " = " + result.toFixed(2) + " " + toUnit;
+}
+
+    </script>
+</body>
+</html>
